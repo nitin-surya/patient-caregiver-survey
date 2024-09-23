@@ -5,7 +5,7 @@ body {
   }
   
   .dashboard {
-    max-width: 800px; /* Reduced width for better readability */
+    max-width: 800px;
     margin: auto;
     padding: 30px;
     background: white;
@@ -13,8 +13,17 @@ body {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   }
   
-  h1 {
+  .header {
     text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .logo {
+    width: 100px; /* Adjust the logo size */
+    margin-bottom: 10px;
+  }
+  
+  h1 {
     color: #333;
   }
   
@@ -25,13 +34,14 @@ body {
   }
   
   .select-container {
+    display: flex; /* Use flexbox for side-by-side layout */
+    align-items: center; /* Center items vertically */
     margin-bottom: 20px;
-    text-align: center; /* Center the label */
   }
   
   label {
-    margin-right: 10px;
     font-weight: bold;
+    margin-right: 10px; /* Space between label and dropdown */
   }
   
   .table-container {
@@ -67,12 +77,16 @@ body {
   
   @media (max-width: 600px) {
     h2 {
-      font-size: 20px; /* Smaller font size for headers */
+      font-size: 20px;
     }
   
     th, td {
       font-size: 14px;
       padding: 8px;
+    }
+  
+    .logo {
+      width: 80px; /* Adjust logo size for smaller screens */
     }
   }
   

@@ -1,51 +1,27 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import "./Dashboard.css";
+import logo from "./logo.jpeg"; // Ensure you have a logo.jpeg file in your src folder
+import { ProvidersList, SampleData, Title } from "./DashboardData";
 
-const providers = [
-  { value: "Venessa Payne APRN", label: "Venessa Payne APRN" },
-  {
-    value: "Gabrielle Jiminez-Murphy DNP, APRN, FNP-C",
-    label: "Gabrielle Jiminez-Murphy DNP, APRN, FNP-C",
-  },
-  { value: "Dr. Muhammad Sanaullah", label: "Dr. Muhammad Sanaullah" },
-];
+const providers = ProvidersList;
 
-const generateRandomData = () => {
-  const data = {};
-  providers.forEach((provider) => {
-    data[provider.value] = {
-      experience: {
-        yes: Math.floor(Math.random() * 1001),
-        uncertain: Math.floor(
-          Math.random() * (1000 - Math.floor(Math.random() * 1001))
-        ),
-        no:
-          1000 -
-          (Math.floor(Math.random() * 1001) +
-            Math.floor(
-              Math.random() * (1000 - Math.floor(Math.random() * 1001))
-            )),
-      },
-      visit: Array.from({ length: 10 }, () => Math.floor(Math.random() * 6)),
-    };
-  });
-  return data;
-};
-
-const initialData = generateRandomData();
-
+// Sample static data for providers
+const initialData = SampleData;
 const Dashboard = () => {
-  const [selectedProvider, setSelectedProvider] = useState(providers[0].value);
-  const data = initialData[selectedProvider];
+  const [selectedProvider, setSelectedProvider] = useState(null); // Start with no selection
+  const data = selectedProvider ? initialData[selectedProvider] : null; // Get data only if a provider is selected
 
   const handleChange = (selectedOption) => {
-    setSelectedProvider(selectedOption.value);
+    setSelectedProvider(selectedOption ? selectedOption.value : null);
   };
 
   return (
     <div className="dashboard">
-      <h1>Patient and Caregiver Survey</h1>
+      <div className="header">
+        <img src={logo} alt="Logo" className="logo" />
+        <h1>{Title}</h1>
+      </div>
 
       <div className="select-container">
         <label htmlFor="provider-select">Provider name:</label>
@@ -58,8 +34,8 @@ const Dashboard = () => {
           styles={{
             control: (provided) => ({
               ...provided,
-              width: "300px", // Set width to a more reasonable size
-              margin: "0 auto", // Center the dropdown
+              width: "300px",
+              marginLeft: "10px",
               borderColor: "#ccc",
               boxShadow: "none",
               "&:hover": {
@@ -68,7 +44,7 @@ const Dashboard = () => {
             }),
             menu: (provided) => ({
               ...provided,
-              zIndex: 9999, // Ensure the dropdown is above other elements
+              zIndex: 9999,
             }),
           }}
         />
@@ -88,38 +64,43 @@ const Dashboard = () => {
           <tbody>
             <tr>
               <td>
-                {selectedProvider} informed me about how to contact a provider
-                during evenings, weekends, and holidays
+                {selectedProvider
+                  ? `${selectedProvider} informed me about how to contact a provider during evenings, weekends, and holidays`
+                  : "-"}
               </td>
-              <td>{data.experience.yes}</td>
-              <td>{data.experience.uncertain}</td>
-              <td>{data.experience.no}</td>
+              <td>{data ? data.experience.yes : "-"}</td>
+              <td>{data ? data.experience.uncertain : "-"}</td>
+              <td>{data ? data.experience.no : "-"}</td>
             </tr>
             <tr>
               <td>
-                {selectedProvider} services have reduced my trips to the
-                Emergency Room and/or hospital
+                {selectedProvider
+                  ? `${selectedProvider} services have reduced my trips to the Emergency Room and/or hospital`
+                  : "-"}
               </td>
-              <td>{data.experience.yes}</td>
-              <td>{data.experience.uncertain}</td>
-              <td>{data.experience.no}</td>
+              <td>{data ? data.experience.yes : "-"}</td>
+              <td>{data ? data.experience.uncertain : "-"}</td>
+              <td>{data ? data.experience.no : "-"}</td>
             </tr>
             <tr>
               <td>
-                {selectedProvider} services have helped me achieve my goals
+                {selectedProvider
+                  ? `${selectedProvider} services have helped me achieve my goals`
+                  : "-"}
               </td>
-              <td>{data.experience.yes}</td>
-              <td>{data.experience.uncertain}</td>
-              <td>{data.experience.no}</td>
+              <td>{data ? data.experience.yes : "-"}</td>
+              <td>{data ? data.experience.uncertain : "-"}</td>
+              <td>{data ? data.experience.no : "-"}</td>
             </tr>
             <tr>
               <td>
-                Would you recommend {selectedProvider} to your family and
-                friends?
+                {selectedProvider
+                  ? `Would you recommend ${selectedProvider} to your family and friends?`
+                  : "-"}
               </td>
-              <td>{data.experience.yes}</td>
-              <td>{data.experience.uncertain}</td>
-              <td>{data.experience.no}</td>
+              <td>{data ? data.experience.yes : "-"}</td>
+              <td>{data ? data.experience.uncertain : "-"}</td>
+              <td>{data ? data.experience.no : "-"}</td>
             </tr>
           </tbody>
         </table>
@@ -149,15 +130,16 @@ const Dashboard = () => {
               "Ability to obtain a timely house call for an urgent problem",
               "Staff’s level of courtesy and caring when the office is called",
               "Courtesy and friendliness of the nursing staff",
-              "Overall quality of care provided by " + selectedProvider,
+              "Overall quality of care provided by " +
+                (selectedProvider || "-"),
             ].map((question, index) => (
               <tr key={index}>
-                <td>{question}</td>
-                <td>{data.visit[index] === 5 ? 100 : 0}</td>
-                <td>{data.visit[index] === 4 ? 100 : 0}</td>
-                <td>{data.visit[index] === 3 ? 100 : 0}</td>
-                <td>{data.visit[index] === 2 ? 100 : 0}</td>
-                <td>{data.visit[index] === 1 ? 100 : 0}</td>
+                <td>{selectedProvider ? question : "-"}</td>
+                <td>{data ? data.visit[index][4] : "-"}</td>
+                <td>{data ? data.visit[index][3] : "-"}</td>
+                <td>{data ? data.visit[index][2] : "-"}</td>
+                <td>{data ? data.visit[index][1] : "-"}</td>
+                <td>{data ? data.visit[index][0] : "-"}</td>
               </tr>
             ))}
           </tbody>
