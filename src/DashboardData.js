@@ -17,6 +17,22 @@ export const SampleData = {
       [600, 250, 80, 30, 40], // Ratings for 9th question
       [700, 200, 50, 30, 20], // Ratings for 10th question
     ],
+    feedback: {
+      scheduling: {
+        highlyLikely: 400,
+        likely: 200,
+        neutral: 100,
+        unlikely: 50,
+        highlyUnlikely: 50,
+      },
+      recommendation: {
+        highlyLikely: 500,
+        likely: 150,
+        neutral: 50,
+        unlikely: 30,
+        highlyUnlikely: 20,
+      },
+    },
   },
   "Gabrielle Jiminez-Murphy DNP, APRN, FNP-C": {
     experience: {
@@ -36,6 +52,22 @@ export const SampleData = {
       [650, 150, 50, 30, 20],
       [700, 150, 50, 30, 20],
     ],
+    feedback: {
+      scheduling: {
+        highlyLikely: 350,
+        likely: 250,
+        neutral: 200,
+        unlikely: 100,
+        highlyUnlikely: 50,
+      },
+      recommendation: {
+        highlyLikely: 450,
+        likely: 200,
+        neutral: 100,
+        unlikely: 30,
+        highlyUnlikely: 20,
+      },
+    },
   },
   "Dr. Muhammad Sanaullah": {
     experience: {
@@ -55,6 +87,22 @@ export const SampleData = {
       [800, 150, 30, 20, 0],
       [850, 100, 30, 10, 0],
     ],
+    feedback: {
+      scheduling: {
+        highlyLikely: 450,
+        likely: 300,
+        neutral: 100,
+        unlikely: 50,
+        highlyUnlikely: 25,
+      },
+      recommendation: {
+        highlyLikely: 600,
+        likely: 150,
+        neutral: 50,
+        unlikely: 25,
+        highlyUnlikely: 15,
+      },
+    },
   },
 };
 

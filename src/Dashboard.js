@@ -145,6 +145,49 @@ const Dashboard = () => {
           </tbody>
         </table>
       </div>
+
+      {/* New Table for Scheduling and Recommendations */}
+      <div className="table-container">
+        <h2>Feedback</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Questions</th>
+              <th>Highly Likely</th>
+              <th>Likely</th>
+              <th>Neutral</th>
+              <th>Unlikely</th>
+              <th>Highly Unlikely</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                How easy is it to schedule an appointment with the house call
+                team?
+              </td>
+              <td>{data ? data.feedback.scheduling.highlyLikely : "-"}</td>
+              <td>{data ? data.feedback.scheduling.likely : "-"}</td>
+              <td>{data ? data.feedback.scheduling.neutral : "-"}</td>
+              <td>{data ? data.feedback.scheduling.unlikely : "-"}</td>
+              <td>{data ? data.feedback.scheduling.highlyUnlikely : "-"}</td>
+            </tr>
+            <tr>
+              <td>
+                How likely are you to recommend this house call service to your
+                colleagues and friends?
+              </td>
+              <td>{data ? data.feedback.recommendation.highlyLikely : "-"}</td>
+              <td>{data ? data.feedback.recommendation.likely : "-"}</td>
+              <td>{data ? data.feedback.recommendation.neutral : "-"}</td>
+              <td>{data ? data.feedback.recommendation.unlikely : "-"}</td>
+              <td>
+                {data ? data.feedback.recommendation.highlyUnlikely : "-"}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
