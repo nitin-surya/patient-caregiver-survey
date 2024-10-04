@@ -21,6 +21,7 @@ body {
 .logo {
   width: 100px; /* Logo size */
   margin-bottom: 10px;
+  border-radius: 50px;
 }
 
 h1 {
@@ -47,6 +48,7 @@ h2 {
 label {
   font-weight: bold;
   margin-right: 10px; /* Space between label and dropdown */
+  
 }
 
 .content {
@@ -58,15 +60,20 @@ label {
 .column {
   flex: 1; /* Allows columns to grow */
   min-width: 300px; /* Ensures columns have a minimum width */
-  max-width: 48%; /* Limits column width for side-by-side display */
+  max-width: 100%; /* Limits column width for side-by-side display */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   background-color: #fff;
   padding: 20px;
+  box-sizing: border-box; /* Include padding and border in total width */
 }
 
 .table-container {
   margin-bottom: 40px;
+  border: 1px solid #ddd; /* Add border for better visibility */
+  border-radius: 5px;
+  overflow: auto;
+  width: 100%; /* Ensure it takes full width of the column */
 }
 
 table {
